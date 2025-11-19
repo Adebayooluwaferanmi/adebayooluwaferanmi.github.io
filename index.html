@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iyanuoluwa Adebayo | Agentic AI & Automation Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.15);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2933;
+      --card: #0b1220;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.45);
+      --radius-xl: 1.5rem;
+    }
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.8);
+      backdrop-filter: blur(10px);
+    }
+    nav a {
+      font-size: 0.9rem;
+      margin-left: 1rem;
+      color: var(--muted);
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.3rem;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width .25s ease;
+    }
+    nav a:hover {
+      color: var(--text);
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.9);
+      margin-bottom: 1rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .hero-badge span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34,197,94,0.8);
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin: 0 0 1rem;
+    }
+    .hero h1 span {
+      display: block;
+      color: var(--accent);
+    }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.8rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .btn {
+      border-radius: 999px;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      background: none;
+      color: inherit;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: var(--shadow-soft);
+    }
+    .btn-outline {
+      border-color: rgba(148,163,184,0.4);
+      color: var(--muted);
+      background: rgba(15,23,42,0.9);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .hero-meta strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    .hero-right {
+      position: relative;
+    }
+    .card-hero {
+      border-radius: 1.5rem;
+      padding: 1.4rem;
+      background: radial-gradient(circle at top left, #1d293b, #020617);
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      opacity: 0.3;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(34,197,94,0.2) 0, transparent 60%),
+        radial-gradient(circle at 90% 80%, rgba(56,189,248,0.14) 0, transparent 55%);
+      z-index: -1;
+    }
+    .pill {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .card-hero h2 {
+      font-size: 1.1rem;
+      margin: 0 0 0.4rem;
+    }
+    .stack-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.8rem 0 1.2rem;
+    }
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.35);
+      background: rgba(15,23,42,0.9);
+      color: var(--muted);
+    }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .stat {
+      flex: 1;
+      padding: 0.7rem 0.8rem;
+      border-radius: 0.9rem;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(30,64,175,0.5);
+    }
+    .stat strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--accent);
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 0.85rem;
+      max-width: 26rem;
+    }
+    .pill-small {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 2rem;
+    }
+    .about-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .about-text p {
+      margin-top: 0;
+      margin-bottom: 0.9rem;
+    }
+    .list-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+    .list-inline span {
+      font-size: 0.78rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+    }
+    .about-cards {
+      display: grid;
+      gap: 0.8rem;
+    }
+    .mini-card {
+      padding: 0.9rem 1rem;
+      border-radius: 1rem;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.3);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .mini-card strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      font-size: 0.85rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+    .project {
+      border-radius: var(--radius-xl);
+      padding: 1.2rem 1.1rem;
+      background: radial-gradient(circle at top, rgba(34,197,94,0.16), transparent 55%), #020617;
+      border: 1px solid rgba(148,163,184,0.3);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .project h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+    .project .meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .project p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+    }
+    .project a.link {
+      font-size: 0.8rem;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .timeline {
+      border-left: 1px solid rgba(31,41,55,0.8);
+      margin-left: 0.5rem;
+      padding-left: 1.5rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .timeline-item {
+      position: relative;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.66rem;
+      top: 0.35rem;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.2);
+    }
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .timeline-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .timeline-body {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .timeline-body ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+    }
+    .timeline-body li {
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-xl);
+      padding: 1.5rem 1.3rem;
+      background: linear-gradient(135deg, rgba(34,197,94,0.16), rgba(15,23,42,0.98));
+      border: 1px solid rgba(34,197,94,0.4);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 1.5rem;
+      align-items: center;
+      box-shadow: var(--shadow-soft);
+    }
+    .contact-card p {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      margin: 0.4rem 0 0.8rem;
+    }
+    .contact-list {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+    .contact-list div {
+      margin-bottom: 0.35rem;
+    }
+    .contact-list span {
+      color: #bbf7d0;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero, .about-grid, .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        display: flex;
+        gap: 0.3rem;
+        flex-wrap: wrap;
+      }
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .page {
+        padding-inline: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">IYANUOLUWA A.</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="hero-badge">
+            <span></span>
+            Agentic AI & Automation Engineer · LLMs · GCP
+          </div>
+          <h1>
+            Building agentic AI systems<br />
+            <span>that turn marketing chaos into automation.</span>
+          </h1>
+          <p class="hero-sub">
+            Software engineer and medical laboratory scientist with hands-on experience
+            building data-intensive backends, integrations, and AI-powered workflows.
+            I design, ship, and maintain systems where LLM agents orchestrate real
+            marketing and business outcomes.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="YOUR_CV_LINK_HERE" target="_blank" rel="noopener">
+              View CV
+            </a>
+            <a class="btn btn-outline" href="https://github.com/adebayooluwaferanmi" target="_blank" rel="noopener">
+              GitHub
+            </a>
+            <a class="btn btn-outline" href="#contact">
+              Contact
+            </a>
+          </div>
+          <div class="hero-meta">
+            <div>
+              <strong>Core Focus</strong>
+              Agentic AI · LLM orchestration · Marketing automation
+            </div>
+            <div>
+              <strong>Cloud</strong>
+              GCP · Containers · CI/CD · Observability
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="card-hero">
+            <div class="pill">Agentic AI Profile Snapshot</div>
+            <h2>End-to-end AI automation, from prompts to production.</h2>
+            <div class="stack-chips">
+              <span class="chip">Python</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">LangChain / CrewAI</span>
+              <span class="chip">LLM Tooling & Agents</span>
+              <span class="chip">Vector DBs (RAG)</span>
+              <span class="chip">GCP · Cloud Run</span>
+            </div>
+            <div class="stat-row">
+              <div class="stat">
+                <strong>5+ yrs</strong>
+                Production software development across backend and integrations.
+              </div>
+              <div class="stat">
+                <strong>Multi-cloud</strong>
+                Hands-on with Docker, Kubernetes, and CI/CD pipelines.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-header">
+          <div class="section-title">About</div>
+          <div class="section-subtitle">
+            I combine a strong engineering background with real-world domain experience
+            in healthcare and business workflows to ship AI systems that actually move metrics.
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I’m Iyanuoluwa Adebayo, a software engineer focused on 
+              <strong>agentic AI, integrations, and automation pipelines</strong>.
+              I enjoy taking messy, manual processes and turning them into
+              robust, observable systems powered by LLMs and APIs.
+            </p>
+            <p>
+              Recent work includes designing multi-step agents that
+              coordinate marketing tasks across multiple platforms,
+              building data sync workflows, and deploying containerized
+              services on GCP with CI/CD from GitHub.
+            </p>
+            <p>
+              Outside code, I have a strong background in medical laboratory
+              science and academic research, which helps me reason clearly
+              about data, reliability, and experimentation.
+            </p>
+
+            <div>
+              <strong>Core skills</strong>
+              <div class="list-inline">
+                <span>Python · Node.js</span>
+                <span>LangChain / CrewAI / LLM agents</span>
+                <span>API integration (Meta / Google / TikTok)</span>
+                <span>Vector DBs & RAG</span>
+                <span>GCP · Cloud Run · Cloud Storage</span>
+                <span>Docker · Kubernetes</span>
+                <span>CI/CD · GitHub Actions</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-cards">
+            <div class="mini-card">
+              <strong>Agentic systems mindset</strong>
+              Design agents with memory, tools, and feedback loops that autonomously
+              manage campaigns while staying observable and safe.
+            </div>
+            <div class="mini-card">
+              <strong>Production-ready automation</strong>
+              Integrate LLMs with CRMs, analytics, and ad platforms using clean APIs,
+              versioned prompts, and clear monitoring.
+            </div>
+            <div class="mini-card">
+              <strong>Cloud-native delivery</strong>
+              Containerized services, infrastructure as code where needed, and
+              Git-based workflows that fit startup speed.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="section-header">
+          <div class="section-title">Selected Projects</div>
+          <div class="section-subtitle">
+            A snapshot of the kind of work I enjoy: agentic systems, integrations,
+            and automation that ship to production.
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <article class="project">
+            <div class="meta">Agentic AI · Marketing orchestration</div>
+            <h3>Multi-channel Campaign Agent</h3>
+            <p>
+              An LLM-driven agent that plans, launches, and monitors campaigns
+              across Meta and Google Ads. The system ingests product data,
+              proposes experiments, and ships approved variations automatically.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">Meta/Google Ads API</span>
+              <span class="tag">GCP · Cloud Run</span>
+            </div>
+            <a class="link" href="https://github.com/adebayooluwaferanmi/agentic-campaign-agent" target="_blank" rel="noopener">
+              View on GitHub →
+            </a>
+          </article>
+
+          <article class="project">
+            <div class="meta">RAG · Analytics · Automation</div>
+            <h3>Analytics Copilot for Marketing Teams</h3>
+            <p>
+              Built a RAG-based assistant that connects to Sheets and analytics
+              dashboards, surfaces insights, and drafts weekly performance
+              summaries with recommended next steps.
+            </p>
+            <div class="tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">Vector DB</span>
+              <span class="tag">RAG</span>
+              <span class="tag">Google Sheets API</span>
+            </div>
+            <a class="link" href="https://github.com/adebayooluwaferanmi/analytics-copilot" target="_blank" rel="noopener">
+              View on GitHub →
+            </a>
+          </article>
+
+          <article class="project">
+            <div class="meta">LLM tools · Operations</div>
+            <h3>Agentic Support & Triage Bot</h3>
+            <p>
+              An agent that triages incoming tickets, queries internal tools/APIs,
+              and drafts responses for human approval. Reduced average handling time
+              while maintaining safety via tool-level guardrails.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Tool calling</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Docker · GCP</span>
+            </div>
+            <a class="link" href="https://github.com/adebayooluwaferanmi/agentic-support-bot" target="_blank" rel="noopener">
+              View on GitHub →
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="section-header">
+          <div class="section-title">Experience</div>
+          <span class="pill-small">Condensed & role-relevant</span>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-title">Software / Integration Engineer</div>
+            <div class="timeline-meta">Remote · Cloud / Integrations · YYYY – Present</div>
+            <div class="timeline-body">
+              <ul>
+                <li>Designed and maintained integrations with identity, DevOps, and monitoring platforms.</li>
+                <li>Implemented async, observable services in Python (and/or Node.js) deployed on containers.</li>
+                <li>Worked closely with product and ops teams to turn vague workflows into robust APIs & automations.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Medical Laboratory Scientist & Instructor</div>
+            <div class="timeline-meta">Higher institution · Teaching & Diagnostics · YYYY – YYYY</div>
+            <div class="timeline-body">
+              <ul>
+                <li>Led clinical chemistry workflows with focus on quality control and reliable data.</li>
+                <li>Taught students practical lab methods, documentation, and scientific reasoning.</li>
+                <li>This background strongly influences how I design and validate AI systems today.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-header">
+          <div class="section-title">Let’s work together</div>
+          <div class="section-subtitle">
+            Open to remote roles focused on agentic AI, LLM orchestration,
+            and automation systems (including EST-aligned teams).
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div>
+            <div class="pill">Contact</div>
+            <h2>Ready to discuss agentic AI, marketing automation, or integrations.</h2>
+            <p>
+              If you’re building systems where AI agents orchestrate real business operations,
+              I’d love to talk. I’m especially interested in roles that mix product thinking,
+              system design, and hands-on engineering.
+            </p>
+          </div>
+          <div class="contact-list">
+            <div>
+              <span>Email</span>
+              <a href="mailto:YOUR_EMAIL_HERE">YOUR_EMAIL_HERE</a>
+            </div>
+            <div>
+              <span>GitHub</span>
+              <a href="https://github.com/adebayooluwaferanmi" target="_blank" rel="noopener">
+                github.com/adebayooluwaferanmi
+              </a>
+            </div>
+            <div>
+              <span>LinkedIn</span>
+              <a href="YOUR_LINKEDIN_URL_HERE" target="_blank" rel="noopener">
+                YOUR_LINKEDIN_NAME
+              </a>
+            </div>
+            <div>
+              <span>Location</span>
+              Nigeria · Remote · Open to EST-aligned collaboration
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Iyanuoluwa Adebayo · Portfolio
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
